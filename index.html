@@ -241,7 +241,7 @@
   	<span style="font-size:26px; color:#000;">
             <b>
             	<center>
-                Unleashing the Power of Meta-tuning for Few-shot Generalization <br> Through Sparse Interpolated Experts 
+                Automatic Expert Discovery in LLM Upcycling via <br> Sparse Interpolated Mixture-of-Experts
                </center>
             </b>
 	</span>
@@ -251,21 +251,21 @@
         <center>
         <div style="font-size:18px; text-align: center">
             <a href="https://openreview.net/profile?id=~Shengzhuang_Chen1">Shengzhuang Chen</a><sup>1</sup>, &nbsp; 
-            <a href="https://jihoontack.github.io">Jihoon Tack</a><sup>2</sup>, &nbsp; 
-            <a href="https://scholars.cityu.edu.hk/en/persons/yunqiao-yang(cdb8b84d-9096-46e6-abe1-6a8f0b5f30b8)/publications.html">Yunqiao Yang</a><sup>1</sup>, &nbsp; 
-            <a href='https://www.stats.ox.ac.uk/~teh/'>Yee Whye Teh</a><sup>3</sup>, &nbsp;
-            <a href='https://jonathan-schwarz.github.io/'>Jonathan Richard Schwarz</a><sup>4</sup>°,&nbsp;
-            <a href="https://wei-ying.net/">Ying Wei</a><sup>5</sup>° &nbsp; 
+            <!-- <a href="https://jihoontack.github.io">Jihoon Tack</a><sup>2</sup>, &nbsp;  -->
+            <!-- <a href="https://scholars.cityu.edu.hk/en/persons/yunqiao-yang(cdb8b84d-9096-46e6-abe1-6a8f0b5f30b8)/publications.html">Yunqiao Yang</a><sup>1</sup>, &nbsp;  -->
+            <!-- <a href='https://www.stats.ox.ac.uk/~teh/'>Yee Whye Teh</a><sup>3</sup>, &nbsp; -->
+            <a href="https://wei-ying.net/">Ying Wei</a><sup>2</sup>°, &nbsp; 
+            <a href='https://jonathan-schwarz.github.io/'>Jonathan Richard Schwarz</a><sup>1</sup>°&nbsp;
         </div>
 
         <br>
                 
         <span style="font-size:16px; text-align: center">
-            <sup>1</sup> CityU Hong Kong &nbsp; &nbsp; 
-            <sup>2</sup> KAIST &nbsp; &nbsp; 
-            <sup>3</sup> University of Oxford&nbsp; 
-            <sup>4</sup> Harvard University &nbsp; 
-            <sup>5</sup> NTU &nbsp;
+            <sup>1</sup> Thomson Reuters Foundational Research &nbsp; &nbsp; 
+            <sup>2</sup> Zhejiang University &nbsp; &nbsp; 
+            <!-- <sup>3</sup> University of Oxford&nbsp;  -->
+            <!-- <sup>4</sup> Harvard University &nbsp;  -->
+            <!-- <sup>5</sup> NTU &nbsp; -->
         </span>
         <br>
         <br>
@@ -277,7 +277,7 @@
         <br>
 
         <div class="paper-btn-parent">
-            <a href="https://arxiv.org/abs/2403.08477">
+            <a href="https://arxiv.org/abs/2506.12597">
             [<b>arXiv</b>]
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -293,56 +293,42 @@
     <h2 id="orgc5d597d">Abstract</h2>
     <div class="outline-text-2" id="text-orgc5d597d">
     <p style="text-align:justify">
-        Conventional wisdom suggests parameter efficient fine-tuning of foundation models as the
-state-of-the-art method for transfer learning in
-vision, replacing the rich literature of alternatives
-such as meta-learning. In trying to harness the
-best of both worlds, meta-tuning introduces a subsequent optimization stage of foundation models
-but has so far only shown limited success and
-crucially tends to underperform on out-of-distribution
-(OOD) tasks. In this paper, we introduce Sparse
-MetA-Tuning (SMAT), a method inspired by
-sparse mixture-of-experts approaches and trained
-to isolate subsets of pre-trained parameters automatically for meta-tuning on each task. SMAT
-successfully overcomes OOD sensitivity and
-delivers on the promise of enhancing the transfer
-abilities of vision foundation models beyond
-parameter-efficient finetuning. We establish new
-state-of-the-art results on a challenging combination of Meta-Dataset augmented with additional
-OOD tasks in both zero-shot and gradient-based
-adaptation settings. In addition, we provide a
-thorough analysis of the superiority of learned
-over hand-designed sparsity patterns for sparse
-expert methods and the pivotal importance of the
-sparsity level in balancing between in-domain
-and out-of-domain generalization.
+        We present Sparse Interpolated Mixture-of-Experts (SIMoE) instruction-tuning, an end-to-end algorithm designed to fine-tune a dense
+pre-trained Large Language Model (LLM) into
+a MoE-style model that possesses capabilities in multiple specialized domains. During
+instruction-tuning, SIMoE <b>automatically identifies multiple specialized experts</b> under a specified sparsity constraint, with each expert representing a structurally sparse subset of the seed
+LLM’s parameters that correspond to domainspecific knowledge within the data. SIMoE simultaneously <b>learns an input-dependent expert
+merging strategy</b> via a router network, leveraging rich cross-expert knowledge for superior
+downstream generalization that surpasses existing baselines. Empirically, SIMoE consistently achieves state-of-the-art performance on
+common instruction-tuning benchmarks while
+maintaining an <b>optimal performance-compute
+trade-off</b> compared to all baselines.
+
     </p>
     <br>
     <div id="outline-container-orgc5d597d" class="outline-2">
     <h2 id="orgc5d597d">Method</h2>
     <div class="outline-text-2" id="text-orgc5d597d">
     <p style="text-align:justify">
-        SMAT meta-learns a shared knowledge pool 
-        consists of 
-        sparse interpolated experts characterized by a common, learnable set of dense parameters 
-        and distinct, learnable sets of gating masks 
-        with sparsity constraints. To construct each task-specific model 
-        for both meta-training and inference, (1) SMAT first combines experts via a weighted-sum with merging weights 
-        generated by a meta-learned hypernetwork 
-        based on the task's support set 
-       . (2) The experts are then subsequently interpolated with the frozen pre-trained model 
-        to enhance both in-distribution (ID) and out-of-distribution (OOD) generalization performance. Alongside (3) the query prediction loss 
-       , (4) knowledge distillation with task-specific dense teachers 
-        is introduced during meta-training to promote specialization and cooperation of the sparse interpolated experts, ensuring optimization success.
+       <!-- Overview of the proposed \textbf{S}parse \textbf{I}nterpolated \textbf{M}ixture-\textbf{o}f-\textbf{E}xperts~(SIMoE) instruction-tuning approach.  -->
+       SIMoE conceptually resembles the MoE principle in routing and combining specialized parameter components through soft merging, 
+       while it differs in implementation from conventional MoE architectures by defining each expert as a specific subset of sparse parameters within a shared network. 
+       Specifically, SIMoE upcycles a pre-trained LLM into a MoE-style model characterized by M experts, 
+       consisting of a shared, trainable set of expert parameters and M distinct, 
+       trainable sets of expert masks. In forward computation, 
+       (1-2) SIMoE merges experts via a weighted-sum with coefficients generated via a router network based on the input prompt, 
+       before combining with the frozen, pre-trained LLM. 
+       (3) During instruction-tuning, we enforce structured sparsity and orthogonality on the trainable masks in addition to the usual NLL loss, 
+       determining <i>where-to-upcycle</i> and encouraging expert specialization in a fully automatic manner.
     </p>
-    <div class="button-container">
+    <!-- <div class="button-container">
         <button class="button-80" role="button" id="clickme" onmouseout="resetImage('methodoverview')" onclick="changeImage('methodoverview','resources/overview.png')" onmouseover="previewImage('methodoverview','resources/overview.png');">Overview</button>
         <button class="button-80" role="button" id="clickme" onmouseout="resetImage('methodoverview')" onclick="changeImage('methodoverview','resources/pool.png')" onmouseover="previewImage('methodoverview','resources/pool.png');">Knowledge pool</button>
         <button class="button-80" role="button" id="clickme" onmouseout="resetImage('methodoverview')" onclick="changeImage('methodoverview','resources/merge.png')" onmouseover="previewImage('methodoverview','resources/merge.png');">Expert selection</button>
         <button class="button-80" role="button" id="clickme" onmouseout="resetImage('methodoverview')" onclick="changeImage('methodoverview','resources/teacher.png')" onmouseover="previewImage('methodoverview','resources/teacher.png');">Dense teacher</button>
         <button class="button-80" role="button" id="clickme" onmouseout="resetImage('methodoverview')" onclick="changeImage('methodoverview','resources/inference.png')" onmouseover="previewImage('methodoverview','resources/inference.png');">Test-time inference</button>
         
-    </div>
+    </div> -->
    <figure class="figure-slarge">
         <img id="methodoverview" src="resources/overview.png" />
     </figure>	
@@ -351,51 +337,98 @@ and out-of-domain generalization.
     <div id="outline-container-orgc5d597d" class="outline-2">
     <h2 id="orgc5d597d">Experimental Results</h2>
     <div class="outline-text-2" id="text-orgc5d597d">
-    
-    <figure class="figure-large">
-  	 <img src="resources/results_table.png">
-	</figure>	
+
+
 	<p style="text-align:justify">
-        <strong>Few-shot testing performance</strong>:
-        We report the average in-distribution (ID) and out-of-distribution (OOD) few-shot testing performance of the meta-tuned models on the Meta-dataset benchmark augmented with additional OOD few-shot learning tasks. The results highlight that SMAT consistently achieves the best generalization performance among all methods across all evaluation settings, including direct inference without fine-tuning, gradient-based fine-tuning by fine-tuning the full model, and parameter-efficient fine-tuning using LoRA.
+        <strong>Cross-task generalization performance:</strong>
+        SIMoE consistently achieves the strongest generalization performance across all of our experiments. SIMoE excels in cross-task generalization on the <b></b>Super-NaturalInstructions benchmark, 
+        outperforming baselines in at least 7 out of 12 unseen task categories. This results in overall average gains of 2.5% and 1.6% over Full FT for the 3B and 8B pre-trained models, respectively.  
+    </p>
+          <figure class="figure-large">
+  	 <img src="resources/results_sni.png">
+	</figure>
+    <p style="text-align:justify">
+        SIMoE demonstrates strong generalization performance when transferring to a larger pre-trained model and a relatively larger instruction fine-tuning dataset,i.e., the Tülu-v3. 
+        SIMoE maintains its competitive edge, surpassing all baseline methods on average over 12 common LLM evaluation benchmarks, with a noticeable improvement of 0.6% over the official Tülu-v3-8B-SFT model – 
+        the recent open-source state-of-the-art. 
+    </p>
+                  <figure class="figure-large">
+     <img src="resources/results_tulu.png">
+	</figure>
 	</p>
 	<br>
     <br>
 
-
-    <figure class="figure-large">
-  	     <img src="resources/speedup.png">
-	</figure>
-	<p style="text-align:justify"><strong>Learning speedup</strong> (Left): SMAT yields better ID results with an attractive learning speedup while achieves and maintains high OOD generalization performance. </p>
-    <p style="text-align:justify"> <strong>Meta-tuning task diversities</strong> (Right): SMAT achieves both improved ID and OOD generalization performance over the baselines under all evaluated meta-tuning settings with various training task diversities.</p> 
-    <br>
-    <br>
-
-    <figure class="figure-large">
-        <img src="resources/tradeoff.png">
+    <p style="text-align:justify">
+        <strong>Specialized experts and orthogonality:</strong> In the left panel, we visualize the average expert activation for different tasks and notice that all experts exhibit some utilization across datasets, and hierarchical clustering
+of activation similarities reveals a clear dendrogram structure aligned with task and domain relationships. In panel right, we assess expert specialization through pairwise mask overlap ratios. The results show that experts generally have low overlaps – sharing a small number of
+parameters, though domain-similar experts (according to grouping in the dendrogram) exhibit marginally higher
+overlaps – for instances, maths- and code-domain experts {2,6,7}; general- and safety-domain experts {3,4}. The results demonstrate that SIMoE
+is capable of identifying a balanced shared and expert-specific parameter partitions, enabling nuanced specialization while maintaining strong synergies between distinct experts. <br>
+ </p>
+    <div style="display: flex; gap: 20px; justify-content: center; ">
+    <figure>
+        <img  src="resources/dendrogram.png" alt="Description 1" style="max-width: 100%;">
+        <!-- <figcaption>Caption for image 1</figcaption> -->
     </figure>
-	<p style="text-align:justify"><strong>Sparsity finds optimal ID vs OOD trade-offs</strong> (Left): The sparsity level of experts essentially constrols the realtive strength of interpoaltion between pre-trained model and the meta-trained experts, therefore, establishes a trade-off between ID and OOD performance, with an optimal point usually existing between the extremes. </p>
-    <p style="text-align:justify"> <strong>Sparsity encourages specialization</strong> (Right):	Higher sparsity in SMAT potentially induces better meta-gradient alignment during meta-tuning, indicating a sign of development for each expert into a highly specialized region of parameters.</p>
-	<br>
+    
+    <figure>
+        <img  src="resources/ortho.png" alt="Description 2" style="max-width: 100%;">
+        <!-- <figcaption>Caption for image 2</figcaption> -->
+    </figure>
+    </div>
+    <br>
     <br>
 
-	<figure class="figure-slarge">
-  	     <img src="resources/visualization.png">
-	</figure>
 
-    <p style="text-align:justify"><strong>Meta-learned expert sparsity patterns</strong> (a-b,d): (a-b) Expert capacity (i.e., the number of non-zero parameters remaining after meta-tuning) grouped by (a) layer types, and (b) layer depth. (d) Overlap (of non-zero regions) between expert masks. The results indicate a noticeable deviation in meta-learned sparsity patterns among experts exists.</p>
-    <p style="text-align:justify"><strong>Implied task relationship</strong> (c): A dendrogram, produced based on expert selection scores, clearly shows hierarchical clustering according
-        to visual similarities between tasks.
+
+	<p style="text-align:justify"><strong>Training and inference cost:</strong>
+    We compare the model capacity of (1) SIMoE using M = 8 upcycled sparse interpolated experts at each linear layer, and (2) Sparse upcycling
+with 4 experts at each FNN block and Top-2 expert routing. Thanks to the proposed learnable, structured sparsity masks in combination with expert parameter sharing, our method significantly reduces
+model size during training, immediately providing a substantial reduction in peak GPU memory usage. Furthermore, by targeting a final sparsity of 75% in upcycled experts, our model achieves an smaller inference size, with approximately 30% fewer parameters compared to the number of active parameters per forward-pass in a upcycled SMoE model.
+    <figure class="figure-large">
+  	     <img src="resources/compute.png" style="max-width: 65%;">
+	</figure>    
+    </p>
+    <br>
     <br>
 
-    <div id="outline-container-orgc5d597d" class="outline-2">
-    <h2 id="orgc5d597d">SMAT Explained</h2>
+
+    <p style="text-align:justify"><strong>Learned sparse upcycling patterns:</strong>
+        We visualize the distribution of non-zero experts in the upcycled LLM learned by SIMoE from instruction-tuning. Several key observations
+emerge. First, as shown in panel (right), upcycling primarily occurs in the shallow and intermediate
+Transformer layers, with significantly reduced activity in deeper layers. Second, panel (left) reveals that non-negligible upcycling manifests across all
+layer types, though with distinct intensity: layer normalization parameters exhibit the highest proportion of upcycled (non-zero) expert parameters, while the gate layer in the FNN demonstrates the lowest. Key, value, and output matrices in the attention block maintain a noticeably higher fraction 
+of non-zero parameters than query weights, aligning with prior work that identified these matrices as crucial for knowledge injection and model editing.
+Notably, the learned upcycling pattern by SIMoE, which achieves the best empirical performance, diverges substantially from manually prescribed strategies (e.g., upcycle FFN only), underscoring the critical advantage of data-driven approaches for determining where-to-upcycle.
+    </p>
+    
+     <figure class="figure-large">
+        <img src="resources/sparsity_patterns.png" style="max-width: 65%;">
+    </figure>
+
+    <!-- <div style="display: flex; gap: 20px; justify-content: center;">
+    <figure>
+        <img  src="resources/sparsity_patterns.png" alt="Description 1" style="max-width: 105%;">
+        <figcaption>Caption for image 1</figcaption>
+    </figure>
+    
+    <figure>
+        <img  src="resources/ortho.png" alt="Description 2" style="max-width: 95%;">
+        <figcaption>Caption for image 2</figcaption>
+    </figure>
+    </div> -->
+
+    
+    
+    <!-- <div id="outline-container-orgc5d597d" class="outline-2">
+    <h2 id="orgc5d597d">SIMoE Explained</h2>
     <div class="outline-text-2" id="text-orgc5d597d">
     
     <br />
     <div class="responsive-iframe">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/9gmSWfJdjtw?si=rRZNIa7i3wibwwaU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    </div> -->
 
     <div id="outline-container-orgc5d597d" class="outline-2">
     <h2 id="orgc5d597d">Citation</h2>
@@ -404,13 +437,13 @@ and out-of-domain generalization.
             <td width="100%" style="background-color: #EEEEEE;">
                 <div style="font-size:14px;">
                     <tt>
-			@inproceedings{chen2024unleashing,<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title={Unleashing the Power of Meta-tuning for Few-shot Generalization Through Sparse Interpolated Experts},<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={Shengzhuang Chen and Jihoon Tack and Yunqiao Yang and Yee Whye Teh and Jonathan Richard Schwarz and Ying Wei},<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;booktitle={Forty-first International Conference on Machine Learning},<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2024},<br>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url={https://openreview.net/forum?id=QhHMx51ir6}
-					}
+			@inproceedings{chen-etal-2025-automatic,<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title={Automatic Expert Discovery in LLM Upcycling via Sparse Interpolated Mixture-of-Experts},<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={Shengzhuang Chen and Ying Wei and Jonathan Richard Schwarz},<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics},<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2025},<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url={https://openreview.net/forum?id=QhHMx51ir6} <br>
+			}
                     </tt>
                 </div>
             </td>
