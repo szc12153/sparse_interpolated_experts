@@ -494,10 +494,10 @@ and out-of-domain generalization.
                 <a href="https://arxiv.org/abs/2506.12597">
                 [<b>arXiv</b>]
                 </a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="https://github.com/szc12153/sparse_meta_tuning">
                 [<b>Code</b>]
-                </a>
+                </a> -->
             </div>
             </center>
             </tr>
@@ -511,7 +511,7 @@ and out-of-domain generalization.
     pre-trained Large Language Model (LLM) into
     a MoE-style model that possesses capabilities in multiple specialized domains. During
     instruction-tuning, SIMoE <b>automatically identifies multiple specialized experts</b> under a specified sparsity constraint, with each expert representing a structurally sparse subset of the seed
-    LLM’s parameters that correspond to domainspecific knowledge within the data. SIMoE simultaneously <b>learns an input-dependent expert
+    LLM's parameters that correspond to domainspecific knowledge within the data. SIMoE simultaneously <b>learns an input-dependent expert
     merging strategy</b> via a router network, leveraging rich cross-expert knowledge for superior
     downstream generalization that surpasses existing baselines. Empirically, SIMoE consistently achieves state-of-the-art performance on
     common instruction-tuning benchmarks while
@@ -577,7 +577,7 @@ and out-of-domain generalization.
 
             <p style="text-align:justify">
                 <strong>Specialized experts and orthogonality:</strong> In the left panel, we visualize the average expert activation for different tasks and notice that all experts exhibit some utilization across datasets, and hierarchical clustering
-        of activation similarities reveals a clear dendrogram structure aligned with task and domain relationships. In panel right, we assess expert specialization through pairwise mask overlap ratios. The results show that experts generally have low overlaps – sharing a small number of
+        of activation similarities reveals a clear dendrogram structure aligned with task and domain relationships. In the right panel, we assess expert specialization through pairwise mask overlap ratios. The results show that experts generally have low overlaps – sharing a small number of
         parameters, though domain-similar experts (according to grouping in the dendrogram) exhibit marginally higher
         overlaps – for instances, maths- and code-domain experts {2,6,7}; general- and safety-domain experts {3,4}. The results demonstrate that SIMoE
         is capable of identifying a balanced shared and expert-specific parameter partitions, enabling nuanced specialization while maintaining strong synergies between distinct experts. <br>
@@ -657,7 +657,7 @@ and out-of-domain generalization.
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={Shengzhuang Chen and Ying Wei and Jonathan Richard Schwarz},<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics},<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2025},<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url={https://openreview.net/forum?id=QhHMx51ir6} <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url={https://arxiv.org/abs/2506.12597} <br>
                 }
                         </tt>
                     </div>
