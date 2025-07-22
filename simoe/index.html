@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <script>
+        function switchContent() {
+            var selector = document.getElementById("contentSelector");
+            
+            if (selector.value === "Home") {
+                window.location.href = "../";
+            } else if (selector.value === "SMAT") {
+                window.location.href = "../sparse_meta_tuning/";
+            }
+            // If "SIMoE" is selected, stay on current page
+        }
+
+        // Set the dropdown to "SIMoE" when page loads
+        window.onload = function() {
+            document.getElementById("contentSelector").value = "SIMoE";
+        }
+    </script>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>SIMoE</title>
+    <meta name="author" content="SIMoE" />
+    <meta name="generator" content="Org Mode" />
+    <style>
+        .title  { text-align: center;
+                 margin-bottom: .2em; }
+        .subtitle { text-align: center;
+                    font-size: medium;
+                    font-weight: bold;
+                    margin-top:0; }
+        .todo   { font-family: monospace; color: red; }
+        .done   { font-family: monospace; color: green; }
+        .priority { font-family: monospace; color: orange; }
+        .tag    { background-color: #eee; font-family: monospace;
+                   padding: 2px; font-size: 80%; font-weight: normal; }
+        .timestamp { color: #bebebe; }
+        .timestamp-kwd { color: #5f9ea0; }
+        .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+        .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+        .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+        .underline { text-decoration: underline; }
+
+        .figure-slarge img {
+            width: 100%; /* width for large figure */
+            display: block;
+            margin: 0 auto; /* center image */
+        }
+
+        .figure-large img {
+            width: 75%; /* width for large figure */
+            display: block;
+            margin: 0 auto; /* center image */
+        }
+
+        .figure-medium img {
+            width: 50%; /* width for medium figure */
+            display: block;
+            margin: 0 auto; /* center image */
+        }
+
+        /* other figure styles can go here */
+
+        @media screen and (max-width: 650px) { /* adjust the pixel value based on your design */
+        .figure-slarge img, .figure-large img, .figure-medium img {
+            width: 100%; /* full width on smaller screens */
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto; /* Maintains the aspect ratio */
+            padding-right: 2%;
+            vertical-align: middle;
+        }
+
+        figure {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table { table-layout: fixed; }
+        td {
+            width: 50%;
+        }
+
+        body {
+            max-width: 1080px;
+            padding: 10px;
+            padding-top: 45px;
+            padding-bottom: 40px;
+            margin: 0 auto;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 375;
+            background-color: #fdfdfd;
+            line-height: 1.3;
+            position: relative;
+        }
+
+        .content-selector {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 100;
+        }
+
+        #contentSelector {
+            padding: 5px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 11px;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        #contentSelector:hover {
+            border-color: #3498db;
+        }
+
+        #contentSelector:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 1px 6px rgba(52, 152, 219, 0.2);
+        }
+
+        strong{
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 500;
+        }
+
+        h1 {
+            margin-top: 0;
+            line-height: 1;
+            font-weight: 500;
+        }
+
+        h2 {
+            border-bottom: 1px solid #ddd;
+            margin-top: 1.3em;
+            margin-bottom: 0em;
+            padding-bottom: 4px;
+            font-weight: 500;
+        }
+
+        li {
+           margin: 7px 0;
+          }
+
+        a { 
+            color:#1772d0; 
+            text-decoration-line: none;
+        }
+        a:hover {
+            color:#f09228; 
+        }
+
+        .footer {
+            padding-top: 10px;
+        }
+
+        .footer-cover {
+            background-color: #f5f5f5;
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: 50px;
+            height: 80px;
+        }
+
+        .responsive-iframe {
+            width: 650px;
+            height: 350px;
+            max-width: 100%;
+            margin: auto; /* Center the iframe */
+        }
+
+        .responsive-iframe iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media screen and (max-width: 650px){
+            .content-selector {
+                position: static;
+                margin-bottom: 15px;
+                text-align: left;
+            }
+
+            body {
+                padding-top: 25px;
+            }
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css">
+  </head>
+  <body>
+
+    <div class="content-selector">
+        <select id="contentSelector" onchange="switchContent()">
+            <option value="Home">Home Page</option>
+            <option value="SIMoE" selected>SIMoE</option>
+            <option value="SMAT">SMAT</option>
+        </select>
+    </div>
+
+        <span style="font-size:26px; color:#000;">
+                <b>
+                    <center>
+                    Automatic Expert Discovery in LLM Upcycling via <br> Sparse Interpolated Mixture-of-Experts
+                </center>
+                </b>
+        </span>
+        <br>
+        <span style="font-size:16px; color:#ec2e2e; text-align: center;">
+            <center>
+                <b>ACL 2025 (Oral)</b>
+            </center>
+        </span>
+        <br>
+        <table align=center width=600px>
+            <tr>
+            <center>
+            <div style="font-size:18px; text-align: center">
+                <a href="https://openreview.net/profile?id=~Shengzhuang_Chen1">Shengzhuang Chen</a><sup>1</sup>, &nbsp; 
+                <a href="https://wei-ying.net/">Ying Wei</a><sup>2</sup>°, &nbsp; 
+                <a href='https://jonathan-schwarz.github.io/'>Jonathan Richard Schwarz</a><sup>1</sup>°&nbsp;
+            </div>
+
+            <br>
+                    
+            <span style="font-size:16px; text-align: center">
+                <sup>1</sup> Thomson Reuters Foundational Research &nbsp; &nbsp; 
+                <sup>2</sup> Zhejiang University &nbsp; &nbsp; 
+            </span>
+            <br>
+            <br>
+            <span style="font-size:13px; text-align: center">
+                °Joint senior authorship, equal contribution &nbsp; &nbsp; 
+            </span>
+            
+            <br>
+            <br>
+
+            <div class="paper-btn-parent">
+                <a href="https://arxiv.org/abs/2506.12597">
+                [<b>arXiv</b>]
+                </a>
+            </div>
+            </center>
+            </tr>
+            </table>
+
+        <div id="outline-container-orgc5d597d" class="outline-2">
+        <h2 id="orgc5d597d">Abstract</h2>
+        <p style="text-align:justify">
+            We present Sparse Interpolated Mixture-of-Experts (SIMoE) instruction-tuning, an end-to-end algorithm designed to fine-tune a dense
+    pre-trained Large Language Model (LLM) into
+    a MoE-style model that possesses capabilities in multiple specialized domains. During
+    instruction-tuning, SIMoE <b>automatically identifies multiple specialized experts</b> under a specified sparsity constraint, with each expert representing a structurally sparse subset of the seed
+    LLM's parameters that correspond to domainspecific knowledge within the data. SIMoE simultaneously <b>learns an input-dependent expert
+    merging strategy</b> via a router network, leveraging rich cross-expert knowledge for superior
+    downstream generalization that surpasses existing baselines. Empirically, SIMoE consistently achieves state-of-the-art performance on
+    common instruction-tuning benchmarks while
+    maintaining an <b>optimal performance-compute
+    trade-off</b> compared to all baselines.
+        </p>
+        </div>
+        <br>
+
+        <div id="outline-container-orgc5d597d" class="outline-2">
+        <h2 id="orgc5d597d">Method</h2>
+        <p style="text-align:justify">
+        SIMoE conceptually resembles the MoE principle in routing and combining specialized parameter components through soft merging, 
+        while it differs in implementation from conventional MoE architectures by defining each expert as a specific subset of sparse parameters within a shared network. 
+        Specifically, SIMoE upcycles a pre-trained LLM into a MoE-style model characterized by M experts, 
+        consisting of a shared, trainable set of expert parameters and M distinct, 
+        trainable sets of expert masks. In forward computation, 
+        (1-2) SIMoE merges experts via a weighted-sum with coefficients generated via a router network based on the input prompt, 
+        before combining with the frozen, pre-trained LLM. 
+        (3) During instruction-tuning, we enforce structured sparsity and orthogonality on the trainable masks in addition to the usual NLL loss, 
+        determining <i>where-to-upcycle</i> and encouraging expert specialization in a fully automatic manner.
+        </p>
+        <figure class="figure-slarge">
+            <img id="methodoverview" src="../resources/overview_simoe.png" />
+        </figure>
+        </div>	
+        <br>
+
+        <div id="outline-container-orgc5d597d" class="outline-2">
+            <h2 id="orgc5d597d">Experimental Results</h2>
+
+            <p style="text-align:justify">
+                <strong>Cross-task generalization performance:</strong>
+                SIMoE consistently achieves the strongest generalization performance across all of our experiments. SIMoE excels in cross-task generalization on the <b></b>Super-NaturalInstructions benchmark, 
+                outperforming baselines in at least 7 out of 12 unseen task categories. This results in overall average gains of 2.5% and 1.6% over Full FT for the 3B and 8B pre-trained models, respectively.  
+            </p>
+                <figure class="figure-large">
+            <img src="../resources/results_sni.png">
+            </figure>
+            <p style="text-align:justify">
+                SIMoE demonstrates strong generalization performance when transferring to a larger pre-trained model and a relatively larger instruction fine-tuning dataset,i.e., the Tülu-v3. 
+                SIMoE maintains its competitive edge, surpassing all baseline methods on average over 12 common LLM evaluation benchmarks, with a noticeable improvement of 0.6% over the official Tülu-v3-8B-SFT model – 
+                the recent open-source state-of-the-art. 
+            </p>
+                        <figure class="figure-large">
+            <img src="../resources/results_tulu.png">
+            </figure>
+            <br>
+            <br>
+
+            <p style="text-align:justify">
+                <strong>Specialized experts and orthogonality:</strong> In the left panel, we visualize the average expert activation for different tasks and notice that all experts exhibit some utilization across datasets, and hierarchical clustering
+        of activation similarities reveals a clear dendrogram structure aligned with task and domain relationships. In the right panel, we assess expert specialization through pairwise mask overlap ratios. The results show that experts generally have low overlaps – sharing a small number of
+        parameters, though domain-similar experts (according to grouping in the dendrogram) exhibit marginally higher
+        overlaps – for instances, maths- and code-domain experts {2,6,7}; general- and safety-domain experts {3,4}. The results demonstrate that SIMoE
+        is capable of identifying a balanced shared and expert-specific parameter partitions, enabling nuanced specialization while maintaining strong synergies between distinct experts. <br>
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; ">
+            <figure>
+                <img  src="../resources/dendrogram.png" alt="Description 1" style="max-width: 100%;">
+            </figure>
+            
+            <figure>
+                <img  src="../resources/ortho.png" alt="Description 2" style="max-width: 100%;">
+            </figure>
+            </div>
+            <br>
+            <br>
+
+            <p style="text-align:justify"><strong>Training and inference cost:</strong>
+            We compare the model capacity of (1) SIMoE using M = 8 upcycled sparse interpolated experts at each linear layer, and (2) Sparse upcycling
+        with 4 experts at each FNN block and Top-2 expert routing. Thanks to the proposed learnable, structured sparsity masks in combination with expert parameter sharing, our method significantly reduces
+        model size during training, immediately providing a substantial reduction in peak GPU memory usage. Furthermore, by targeting a final sparsity of 75% in upcycled experts, our model achieves an smaller inference size, with approximately 30% fewer parameters compared to the number of active parameters per forward-pass in a upcycled SMoE model.
+            <figure class="figure-large">
+                <img src="../resources/compute.png" style="max-width: 65%;">
+            </figure>    
+            </p>
+            <br>
+            <br>
+
+            <p style="text-align:justify"><strong>Learned sparse upcycling patterns:</strong>
+                We visualize the distribution of non-zero experts in the upcycled LLM learned by SIMoE from instruction-tuning. Several key observations
+        emerge. First, as shown in panel (right), upcycling primarily occurs in the shallow and intermediate
+        Transformer layers, with significantly reduced activity in deeper layers. Second, panel (left) reveals that non-negligible upcycling manifests across all
+        layer types, though with distinct intensity: layer normalization parameters exhibit the highest proportion of upcycled (non-zero) expert parameters, while the gate layer in the FNN demonstrates the lowest. Key, value, and output matrices in the attention block maintain a noticeably higher fraction 
+        of non-zero parameters than query weights, aligning with prior work that identified these matrices as crucial for knowledge injection and model editing.
+        Notably, the learned upcycling pattern by SIMoE, which achieves the best empirical performance, diverges substantially from manually prescribed strategies (e.g., upcycle FFN only), underscoring the critical advantage of data-driven approaches for determining where-to-upcycle.
+            </p>
+            
+            <figure class="figure-large">
+                <img src="../resources/sparsity_patterns.png" style="max-width: 65%;">
+            </figure>
+        </div>
+
+        <div id="outline-container-orgc5d597d" class="outline-2">
+        <h2 id="orgc5d597d">Citation</h2>
+        <table width="100%" border="0" cellspacing="1" cellpadding="1" align="center">        
+            <tr>
+                <td width="100%" style="background-color: #EEEEEE;">
+                    <div style="font-size:14px;">
+                        <tt>
+                @inproceedings{chen-etal-2025-automatic,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title={Automatic Expert Discovery in LLM Upcycling via Sparse Interpolated Mixture-of-Experts},<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;author={Shengzhuang Chen and Ying Wei and Jonathan Richard Schwarz},<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics},<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year={2025},<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url={https://arxiv.org/abs/2506.12597} <br>
+                }
+                        </tt>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+</body>
+</html> 
