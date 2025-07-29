@@ -6,7 +6,7 @@ This repository contains a pytorch implementation for the paper at ICML 2024: Un
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/unleashing-the-power-of-meta-tuning-for-few/few-shot-image-classification-on-meta-dataset)](https://paperswithcode.com/sota/few-shot-image-classification-on-meta-dataset?p=unleashing-the-power-of-meta-tuning-for-few)
 
 ### Project Website
-Visit our website at https://szc12153.github.io/sparse_meta_tuning for more details and to watch a short video discussion on SMAT! :blush:
+Visit our website at [https://szc12153.github.io/sparse_interpolated_experts](https://szc12153.github.io/sparse_interpolated_experts) for more details and to watch a short video discussion on SMAT! :blush:
 
 ### Meta-tuned SMAT checkpoints
 We are releasing our meta-tuned SMAT checkpoints for pre-trained Vision Transformer backbones of various scales on [HuggingFace](https://huggingface.co/collections/szcjerry/meta-tuned-smat-vits-665823383b2fcd0255363d4e). These checkpoints can be easily accessed by using the API call *SparseInterpolatedExperts.from_pretrained('model-name-on-huggingface')*.
