@@ -1,2 +1,2 @@
 ### Project Website
-https://szc12153.github.io/sparse_meta_tuning/
+https://szc12153.github.io/sparse_interpolated_experts/
